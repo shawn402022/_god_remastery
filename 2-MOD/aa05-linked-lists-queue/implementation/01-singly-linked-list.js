@@ -67,30 +67,29 @@ class SinglyLinkedList {
 
     removeFromTail() {
         // Remove node at tail
-        let curr = this.head;
-        let prev;
-
-        if(!this.length) return undefined
-        if(this.length === 1) this.head = null
-        while(curr.next){
-            prev = curr
-            curr = curr.next;
+        if (!this.length) return undefined;
+        else if (this.length === 1) {
+            return this.removeFromHead()
         }
 
-        prev = null
+        let curr = this.head;
+        while (curr.next.next !== null) {
+            curr = curr.next;
+        }
+        const tempVar = curr.next
 
+        curr.next = null
         this.length--
-        return curr
-        // Your code here
+        return tempVar
 
         // Write your hypothesis on the time complexity of this method here
     }
 
     peekAtHead() {
-        let curr = this.head
+
         // Return the value of head node
-        if(!this.length) return undefined
-        if(this.length >= 1) return curr
+        if (!this.length) return undefined
+        else return this.head.value
 
 
         // Write your hypothesis on the time complexity of this method here
@@ -99,14 +98,15 @@ class SinglyLinkedList {
     print() {
         // Print out the linked list
 
-        let curr = this.head;
+        if(this.length > 0){
+            let curr = this.head;
+            while (curr.next !== null) {
+                console.log(curr.value)
+                curr = curr.next;
+            }
 
-        while(curr){
-            process.stdout.write(`${curr.val} -> `);
-            curr = curr.next
-
-        }
-        console.log("NULL")
+            console.log(curr.value)
+        } 
 
         // Write your hypothesis on the time complexity of this method here
     }
