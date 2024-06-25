@@ -69,11 +69,11 @@ class HashTable {
 
 
       if(!this.data[index]) {
-        this.data[index] = newPair;
+        this.data[index] = this.newPair;
 
       } else {
-        newPair.next = this.data[index];
-        this.data[index] = newPair;
+        this.newPair.next = this.data[index];
+        this.data[index] = this.newPair;
 
       }
       this.count++
