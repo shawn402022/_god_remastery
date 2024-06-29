@@ -64,6 +64,8 @@ class BinarySearchTree {
 
   preOrderTraversal(currentNode = this.root) {
     // Your code here
+
+
   }
 
 
@@ -79,11 +81,27 @@ class BinarySearchTree {
     // Breadth First Traversal - Iterative
   breadthFirstTraversal() {
     // Your code here
+    let node = this.root
+    let queue = [];
+    let data = [];
+    queue.push(node);
+    console.log(node)
+    while(queue.length) {
+      node = queue.shift();
+      data.push(node);
+      if(node.left) queue.push(node.left);
+      if(node.right) queue.push(node.right);
+
+
+    }
+    return data;
+
   }
 
   // Depth First Traversal - Iterative
   depthFirstTraversal() {
     // Your code here
+
   }
 }
 
