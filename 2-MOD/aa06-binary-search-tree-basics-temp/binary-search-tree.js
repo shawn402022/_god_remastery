@@ -64,30 +64,62 @@ class BinarySearchTree {
 
   preOrderTraversal(currentNode = this.root) {
     // Your code here
-
-
+    let data = [];
+    function traverse(currentNode){
+      console.log(currentNode.val)
+      data.push(currentNode);
+      if(currentNode.left) traverse(currentNode.left);
+      if(currentNode.right) traverse(currentNode.right);
+    }
+    traverse(currentNode);
+    return data
   }
 
 
   inOrderTraversal(currentNode = this.root) {
     // Your code here
+    let data = [];
+    function traverse(currentNode){
+
+      if(currentNode.left) traverse(currentNode.left);
+      console.log(currentNode.val)
+      data.push(currentNode);
+      if(currentNode.right) traverse(currentNode.right);
+
+    }
+    traverse(currentNode);
+    return data
+
+
   }
 
 
   postOrderTraversal(currentNode = this.root) {
     // Your code here
+    let data = [];
+    function traverse(currentNode){
+
+      if(currentNode.left) traverse(currentNode.left);
+      if(currentNode.right) traverse(currentNode.right);
+      console.log(currentNode.val)
+      data.push(currentNode);
+    }
+    traverse(currentNode);
+    return data
   }
 
     // Breadth First Traversal - Iterative
   breadthFirstTraversal() {
     // Your code here
+
     let node = this.root
     let queue = [];
     let data = [];
     queue.push(node);
-    console.log(node)
+
     while(queue.length) {
       node = queue.shift();
+      console.log(node.val)
       data.push(node);
       if(node.left) queue.push(node.left);
       if(node.right) queue.push(node.right);
@@ -101,6 +133,23 @@ class BinarySearchTree {
   // Depth First Traversal - Iterative
   depthFirstTraversal() {
     // Your code here
+    let currentNode = this.root
+    let stack = [];
+    let data = [];
+
+    stack.push(currentNode);
+
+    while(stack.length) {
+      currentNode = stack.pop()
+      console.log(currentNode.val)
+
+
+      data.push(currentNode.left);
+      if(currentNode.left) stack.push(currentNode.left);
+      if(currentNode.right) stack.push(currentNode.right);
+
+    }
+    return data
 
   }
 }
