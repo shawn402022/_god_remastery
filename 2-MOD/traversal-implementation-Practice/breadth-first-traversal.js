@@ -7,6 +7,8 @@ const adjList = {
     6: [4]
 }
 
+
+
 function breadthFirstTraverse(start){
     const queue = [start];
     const visited = new Set();
@@ -23,4 +25,20 @@ function breadthFirstTraverse(start){
         }
 
     }
+}
+
+//Udemy implementation
+
+function breadthFirstTraversal(start){
+    let visited = [];
+    let queue = [start];
+
+    while(queue.length) {
+        let node = queue.shift();
+        visited.push(node.value);
+
+        if(node.left) queue.push(node.left);
+        if(node.right) queue.push(node.right);
+    }
+    return visited;
 }

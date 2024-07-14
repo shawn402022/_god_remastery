@@ -1,18 +1,3 @@
-//"INSERT" ADDS A NODE TO THE LINKED LIST AT A SPECIFIC POSITION
-
-/**
- * "Insert" PSEUDOCODE:
- *
- * 1. If the index is less than zero or greater than the length, return false;
- * 2. If the index is   as the length, push a new node to the end of the list;
- * 3. If the index is 0, unshift a new node to the start of the list;
- * 4. Otherwise, using the "get" method, access the node at the index -1
- * 5. Set the next property on that node to be the new node;
- * 6. Set the new property on the new node to be the previous next;
- * 7. Increment the length;
- * 8. Return true
- */
-
 class Node{
     constructor(val){
         this.val = val;
@@ -95,26 +80,27 @@ class SinglyLinkedList{
         return false;
     }
     insert(index, val){
-        //* 1. If the index is less than zero or greater than the length, return false;
         if(index < 0 || index > this.length) return false;
-        //* 2. If the index is   as the length, push a new node to the end of the list;
-        if(index === this.length) return this.push(val);
-        //* 3. If the index is 0, unshift a new node to the start of the list;
-        if(index === 0) return this.unshift(val)
-        //* 4. Otherwise, using the "get" method, access the node at the index -1
-        const newNode = new Node(val);
-        const temp = previous.next
-        previous = this.get(index -1);
-
-        //* 5. Set the next property on that node to be the new node;
-       previous.next = newNode
-        //* 6. Set the new property on the new node to be the previous next;
-        newNode.next = temp
-        //* 7. Increment the length;
-        this.length++
-        //* 8. Return true
+        if(index === this.length) return !!this.push(val);
+        if(index === 0) return !!this.unshift(val);
+        
+        var newNode = new Node(val);
+        var prev = this.get(index - 1);
+        var temp = prev.next;
+        prev.next = newNode;
+        newNode.next = temp;
+        this.length++;
         return true;
-
+    }
+    remove(index){
+        if(index < 0 || index >= this.length) return undefined;
+        if(index === 0) return this.shift();
+        if(index === this.length - 1) return this.pop();
+        var previousNode = this.get(index - 1);
+        var removed = previousNode.next;
+        previousNode.next = removed.next;
+        this.length--;
+        return removed;
     }
 }
 
@@ -124,3 +110,10 @@ list.push(100)
 list.push(201)
 list.push(250)
 list.push(350)
+
+
+
+
+
+
+
